@@ -21,8 +21,8 @@ end
 
 ```elixir
 # Used to Authenticate your bot into the Trello workspace
-config :memo_generator, api_key: ""
-config :memo_generator, api_token: ""
+config :memo_generator, api_key: System.get_env("TRELLO_API_KEY")
+config :memo_generator, api_token: System.get_env("TRELLO_API_TOKEN")
 
 # Provide the link to a logo of your company
 config :memo_generator, logo: ""
