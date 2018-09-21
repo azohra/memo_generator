@@ -7,7 +7,8 @@ defmodule MemoGenerator.MixProject do
       version: "0.1.0",
       elixir: "~> 1.7",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      source_url: "https://github.com/azohra/memo_generator"
     ]
   end
 
@@ -17,6 +18,10 @@ defmodule MemoGenerator.MixProject do
       extra_applications: [:logger],
       applications: [:httpoison]
     ]
+  end
+
+  defp description() do
+    "Generates a memo in Markdown format based on your team's trello boards"
   end
 
   # Run "mix help deps" to learn about dependencies.
