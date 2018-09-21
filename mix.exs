@@ -29,6 +29,7 @@ defmodule MemoGenerator.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      {:ex_doc, ">= 0.0.0", only: :dev},
       {:httpoison, "~> 1.3"},
       {:poison, "~> 4.0"}
     ]
