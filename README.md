@@ -1,6 +1,6 @@
 # MemoGenerator
 
-### An Elixir application to generate a memo by scraping your team's trello boards
+### An Elixir application to generate a memo by scraping your team's trello boards.
 
 ![Sample Memo](sample.png "Sample Memo")
 
@@ -33,6 +33,7 @@ config :memo_generator, splash: ""
 
 ## Usage
 
+#### Use the function within your elixir application...
 ```Elixir
   @doc """
   Function to generate memo for all boards on a trello workspace
@@ -44,6 +45,7 @@ config :memo_generator, splash: ""
   end
 ```
 
+#### Or you can use it through iex
 ```console
 iex(1)> MemoGenerator.go("eCommerce-memo.md", "Weekly Memo - eCommerce")
 
