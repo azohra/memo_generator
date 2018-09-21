@@ -8,7 +8,10 @@ defmodule MemoGenerator.MixProject do
       elixir: "~> 1.7",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
-      source_url: "https://github.com/azohra/memo_generator"
+      description: description(),
+      source_url: "https://github.com/azohra/memo_generator",
+      links: %{"GitHub" => "https://github.com/azohra/memo_generator", "ORG" => "https://azohra.com/"},
+      licenses: ["MIT"]
     ]
   end
 
