@@ -17,14 +17,14 @@ defmodule MemoGenerator do
   @doc """
   Function to generate memo for all boards on a trello workspace
   """
-  def go(filename, title) do
+  def go(filename, title, splash, logo) do
     {:ok, file} = File.open(filename, [:write])
 
     file
-    |> draw_logo
+    |> draw_logo(logo)
     |> write("# "<> title)
     |> add_date
-    |> add_splash
+    |> add_splash(splash)
 
 
     for board <- get_boards() do
@@ -137,8 +137,8 @@ defmodule MemoGenerator do
     card
   end
 
-  defp draw_logo(file) do
-    IO.write(file, "<img src=\"#{@logo}\" alt=\"drawing\" width=\"100\" height=\"100\" align=\"left\" />\n\n")
+  defp draw_logo(file, logo) do
+    IO.write(file, "<img src=\"#{logo}\" alt=\"drawing\" width=\"100\" height=\"100\" align=\"left\" />\n\n")
     file
   end
 
@@ -150,8 +150,8 @@ defmodule MemoGenerator do
     file
   end
 
-  defp add_splash(file) do
-    IO.write(file, @splash <> "\n\n <br> \n\n")
+  defp add_splash(file, splash) do
+    IO.write(file, splash <> "\n\n <br> \n\n")
     IO.write(file, "\n\n <br> \n\n")
     file
   end

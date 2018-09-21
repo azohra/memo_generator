@@ -23,12 +23,6 @@ end
 # Used to Authenticate your bot into the Trello workspace
 config :memo_generator, api_key: System.get_env("TRELLO_API_KEY")
 config :memo_generator, api_token: System.get_env("TRELLO_API_TOKEN")
-
-# Provide the link to a logo of your company
-config :memo_generator, logo: ""
-
-# Add a splash or signature (simmilar to the one below) to be added underneath the title
-config :memo_generator, splash: ""
 ```
 
 ## Usage
@@ -38,7 +32,7 @@ config :memo_generator, splash: ""
   @doc """
   Function to generate memo for all boards on a trello workspace
   """
-  def go(filename, title) do
+   def go(filename, title, splash, logo) do
     |> scrape_webpage
     ...
     |> render_document
@@ -47,7 +41,7 @@ config :memo_generator, splash: ""
 
 #### Or you can use it through iex
 ```console
-iex(1)> MemoGenerator.go("eCommerce-memo.md", "Weekly Memo - eCommerce")
+iex(1)> MemoGenerator.go("eCommerce-memo.md", "Weekly Memo - eCommerce", "Made with &#x2665; by SETI", "https://www.company.com/logo")
 
 16:04:44.355 [info]  Rendered all cards for list: Backlog
  
