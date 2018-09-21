@@ -10,9 +10,9 @@ use Mix.Config
 
 # You can configure your application as:
 #
-config :memo_generator, api_key: ""
-config :memo_generator, api_token: ""
-config :memo_generator, logo: ""
+config :memo_generator, api_key: System.get_env("TRELLO_API_KEY")
+config :memo_generator, api_token: System.get_env("TRELLO_API_TOKEN") 
+config :memo_generator, logo: "" 
 config :memo_generator, splash: ""
 
 # and access this configuration in your application as:

@@ -18,7 +18,7 @@ defmodule MemoGenerator do
   Function to generate memo for all boards on a trello workspace
   """
   def go(filename, title) do
-    {:ok, file} = File.open filename, [:write]
+    {:ok, file} = File.open(filename, [:write])
 
     file
     |> draw_logo
@@ -39,6 +39,20 @@ defmodule MemoGenerator do
     Logger.info("Finished rendering: " <> title <> ", into file: " <> filename)
 
     :ok
+  end
+
+  @doc """
+  Function to delete a rendered memo
+  """
+  def delete(filename) do
+    case File.rm(filename) do
+      :ok -> 
+        Logger.info("Succesfully deleted file: " <> filename)
+        :ok
+      _ -> 
+        Logger.error("Could not delete file: " <> filename)
+        :error
+    end
   end
 
   @doc """
