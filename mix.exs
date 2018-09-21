@@ -4,13 +4,13 @@ defmodule MemoGenerator.MixProject do
   def project do
     [
       app: :memo_generator,
-      version: "0.1.2",
+      version: "0.1.4",
       elixir: "~> 1.7",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       package: package(),
       description: description(),
-      source_url: "https://github.com/azohra/memo_generator",
+      source_url: "https://github.com/azohra/memo_generator"
     ]
   end
 
@@ -38,7 +38,10 @@ defmodule MemoGenerator.MixProject do
   defp package() do
     [
       licenses: ["MIT"],
-      links: %{"GitHub" => "https://github.com/azohra/memo_generator", "Org" => "https://azohra.com/"}
+      links: %{
+        "GitHub" => "https://github.com/azohra/memo_generator",
+        "Org" => "https://azohra.com/"
+      }
     ]
   end
 end

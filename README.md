@@ -25,23 +25,83 @@ config :memo_generator, api_key: System.get_env("TRELLO_API_KEY")
 config :memo_generator, api_token: System.get_env("TRELLO_API_TOKEN")
 ```
 
-## Usage
+## Functions
 
-#### Use the function within your elixir application...
 ```Elixir
-  @doc """
-  Function to generate memo for all boards on a trello workspace
-  """
-   def go(filename, title, splash, logo) do
-    |> scrape_webpage
-    ...
-    |> render_document
+  # Customize what attributes you want on your memo
+  
+  # You can chose between a text splash
+  attributes = %{splash: "<p>Please read carefully</p>"}
+  
+  # A company logo
+  attributes = %{logo: "https://www.company.com/logo"}
+  
+  # Or both
+  attributes = %{splash: "<p>Please read carefully</p>", logo: "https://www.company.com/logo"}
+
+
+  # To generate a memo for all boards with no added attributes
+  def go(:all, filename, title) do
+  #   ...
+  end
+
+  # To generate a memo for a list of  boards with no added attributes
+  def go(["Board_1", "Board_2"], filename, title) do
+  #   ...
+  end
+
+  # To generate a memo for all boards with added attributes
+  def go(:all, filename, title, attributes) do
+  #   ...
+  end
+
+  # To generate a memo for a list of  boards with added attributes
+  def go(["Board_1", "Board_2"], filename, title, attributes) do
+  #   ...
+  end
+
+  # To return a list of all boards the application has access to
+  def get_all_board_names do
+  # ...
+  end
+
+  # To delete a rendered memo from your file system
+  def delete(filename) do
+  # ...
   end
 ```
 
-#### Or you can use it through iex
+## Usage Examples
+
+### Use the function within your Elixir application...
+
+```Elixir
+  # ... inside your application
+
+  def your_api(conn, assigns) do
+    %{
+      board_list: boards,
+      title: title,
+      filename: filename,
+      opts: opts,
+      ...
+    } = assigns
+
+    MemoGenerator.go(boards, filename, title, opts)
+
+    send_file(conn, filename)
+
+    MemoGenerator.delete(filename)
+
+    conn
+  end
+```
+
+### or you can use it through iex
 ```console
-iex(1)> MemoGenerator.go("eCommerce-memo.md", "Weekly Memo - eCommerce", "Made with &#x2665; by SETI", "https://www.company.com/logo")
+iex(1)> MemoGenerator.go(["Backlog", "Secret Project"], "eCommerce-memo.md", "Weekly Memo - eCommerce", %{logo: "https://www.company.com/logo"})
+
+16:04:44.341 [info]  Rendered logo
 
 16:04:44.355 [info]  Rendered all cards for list: Backlog
  
