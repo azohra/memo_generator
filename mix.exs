@@ -4,7 +4,7 @@ defmodule MemoGenerator.MixProject do
   def project do
     [
       app: :memo_generator,
-      version: "0.1.0",
+      version: "0.1.1",
       elixir: "~> 1.7",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
@@ -31,7 +31,7 @@ defmodule MemoGenerator.MixProject do
     [
       {:ex_doc, ">= 0.0.0", only: :dev},
       {:httpoison, "~> 1.3"},
-      {:poison, "~> 4.0"}
+      {:poison, "~> 3.0"}
     ]
   end
 
