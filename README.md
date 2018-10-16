@@ -2,7 +2,7 @@
 
 ### An Elixir application to generate a memo by scraping your team's trello boards.
 
-![Sample Memo](sample.png "Sample Memo")
+![Sample Memo](docs/sample.png "Sample Memo")
 
 ## Installation
 
